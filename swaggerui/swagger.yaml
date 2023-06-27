@@ -1,0 +1,361 @@
+openapi: 3.0.3
+info:
+  title: E-Wallet API 1.0.0
+  description: E-Wallet API for Back-End Assignment
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: reza.farras@shopee.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: Auth
+    description: Everything about authentication on e-wallet api
+  - name: User
+    description: Everything about users on e-wallet api
+  - name: Transactions
+    description: Everything about transaction records on e-wallet api
+security:
+  - bearerAuth: []
+paths:
+  /api/v1/login:
+    post:
+      tags:
+        - Auth
+      summary: Generate access token
+      requestBody:
+        description: User credential
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'          
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Invalid Server Error
+  /api/v1/register:
+    post:
+      tags:
+        - User
+      summary: Register new user
+      requestBody:
+        description: Register new user to database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetailsResponse'          
+        '400':
+          description: Bad Request
+        '500':
+          description: Invalid Server Error
+  /api/v1/user-details:
+    get:
+      tags:
+        - User
+      summary: Get logged in user details
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetailsResponse'          
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: User Not Found
+        '500':
+          description: Invalid Server Error
+    security:
+      - bearerAuth: []
+  /api/v1/topup:
+    post:
+      tags:
+        - Transactions
+      summary: Topup user balance
+      requestBody:
+        description: Topup logged in user balance from given source of funds
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopupRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopupResponse'          
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: User/Wallet Not Found
+        '500':
+          description: Invalid Server Error
+    security:
+      - bearerAuth: []
+  /api/v1/transfer:
+    post:
+      tags:
+        - Transactions
+      summary: Transfer balance to another user
+      requestBody:
+        description: Transfer balance from logged in user to another user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransferResponse'          
+        '400':
+          description: Bad Request / Insufficient Balance
+        '401':
+          description: Unauthorized
+        '404':
+          description: User/Wallet Not Found
+        '500':
+          description: Invalid Server Error
+    security:
+      - bearerAuth: []
+  /api/v1/transactions:
+    get:
+      tags:
+        - Transactions
+      summary: Get all transactions
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionListResponse'          
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Invalid Server Error
+    security:
+      - bearerAuth: []
+components:
+  schemas:
+    LoginRequest:
+      required: 
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          example: johndoe@mail.com
+        password:
+          type: string
+          example: password
+    LoginResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            access_token:
+              type: string
+              example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyXzFAZ21haWwuY29tIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c 
+    UserDetailsResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            email:
+              type: string
+              format: email
+              example: ferlanda@gmail.com
+            phone:
+              type: string
+              example: 6281274903794
+            name:
+              type: string
+              example: Ferlanda
+            wallet:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                balance:
+                  type: integer
+                  format: double
+                  example: 500000
+    RegisterRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Ferlanda
+        phone:
+          type: string
+          example: 6281274903794
+        email:
+          type: string
+          format: email
+          example: ferlanda@gmail.com
+        password:
+          type: string
+          example: password
+    TopupRequest:
+      type: object
+      properties:
+        amount:
+          type: integer
+          format: double
+          example: 1000000
+        source_of_fund_id:
+          type: integer
+          example: 3
+    TopupResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            user_id:
+              type: integer
+              format: integer
+              example: 3
+            sender_id:
+              type: integer
+              example: 1000001
+            recipient_id:
+              type: integer
+              example: 1000002
+            description:
+              type: string
+              example: Top Up from Bank Transfer
+            amount:
+              type: integer
+              example: 100000
+            created_at:
+              type: timestamp
+              example: 2022-11-10T22:01:00.573399955+07:00
+    TransferRequest:
+      type: object
+      properties:
+        amount:
+          type: integer
+          example: 50000
+        recipient_id:
+          type: integer
+          example: 100002
+        description:
+          type: string
+          example: buat berobat
+    TransferResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            user_id:
+              type: integer
+              format: integer
+              example: 3
+            sender_id:
+              type: integer
+              example: 1000001
+            recipient_id:
+              type: integer
+              example: 1000002
+            description:
+              type: string
+              example: Transfer buat jajan
+            amount:
+              type: integer
+              example: 100000
+            created_at:
+              type: timestamp
+              example: 2022-11-10T22:01:00.573399955+07:00
+    TransactionListResponse:
+      type: object
+      properties:
+        total_data:
+          type: integer
+          example: 18
+        total_page:
+          type: integer
+          example: 2
+        current_page:
+          type: integer
+          example: 1
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              user_id:
+                type: integer
+                example: 6
+              sender_id:
+                type: integer
+                example: 100001
+              recipient_id:
+                type: integer
+                example: 100002
+              description:
+                type: string
+                example: Transfer to user 100002
+              amount:
+                type: integer
+                example: 50000
+              transaction_date:
+                type: timestamp
+                example: 2022-11-10T22:01:00.573399955+07:00
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

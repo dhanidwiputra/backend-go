@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "group-project-shopee",
+  "private_key_id": "e9b78f49b28ba8a11a5aff349c901a307c81c5a3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCXL8Gb7gTfCZH1\nVmLIMqRqhpDhLp04E0ELDy48+lE49YKhoOBjWIS5OxPkelGwKFW3u5nu/qmTwqxG\n/z8jYHHnl+YHreWhGdTQtDTJgbgIZJcWWMn9CW1a7jvfRT5S30VQZNj10mIL+Pfe\nVw0XaZcO1e9nqE3Qi3mTuRBkmngjYqiITrlQfBLNeM4YZfGz+tz5pnEEGkWavtwW\nuZH8J8wFAdqOsyJS+z9XzZA9MepshyGLr8uriNeNQnk92awCnTNRPaP6UEDfsz9x\nY6xU6O3N5iurrJQlDnwHL1Ak86P0m1wVyxNFJSM19sGGOUFOlWgGJtT4VSO9zvJk\nwb/zbKTlAgMBAAECggEAGThVt0HG3T/28bK16siL5dtJys6gWmzX0lT3dSOargJC\nhtzT4a6wAUhKIriG7PhliC9K1/PybNwyKevFaAzcI3KS5GANaMjq19/f2GeDwB6r\nl4Y7N7M9Y0hPg4jFA0UMhoM0MBmm0nF3Q8dIv0mVcdudQrDwPiQuJUbfZbDg7qHy\na44XJLHx1S2VjiJ2QMxjMwF23Mem9WGGtnES9UO+XxiuRyZeV/EiexDpkjllBdqQ\nDwomJHdyqQ8mAqcomH+c25T6gkbjKNQkqrE+TF27WBiyhPYVjoqDHvXXEMek5ya+\ny5SKC6m8EEm9af2GluuBrPuplou2n0qAbOZnbA5H0QKBgQDJ7sqRjh9UDgyeZrGy\nrvsjzv2CfgdEB8F9Yfx4a63xCUfv/UcQ0TrQn8tyxkmvG4ssSnKGDxUEWq2WYiDW\nzSdgTpM0eBLnYQvHIEdE6xQj4Rm2IRjlY0CSlQuZkaQFLg08sBvqsYMkTOghSwAm\nkJjF8hYdsyDCPbkGIk4Tjv2HDQKBgQC/qqIlqCJDDzFM3asC0k+Px9a5wsTuI0U1\nlmhesYMIDUyNhuGedGejpZr/aAPeduS1I2bm7JTQ1RWUx+hiweU1M94UD8hZ10c6\nhlatCiCqLSVhWkcxRvjOln6ReyPuv1nkwT8MqNpsi6dU0zhvasw6qPZe6lGExu3a\nMjRxCFsfOQKBgFc+h2Cp0dlEFKmfXuj/dtv6w0bM4qC+5Rch7a2tgEJiqyUB/eFD\nNLEMSR82koFIWjHxnFdVTtRJxTPzA5MqofeXGzyRIEG9iRQoWwJoupPh3nT1CceZ\nwT1TjeZ0qTPfuLJeuEEHHszhOW2g9Ni0onzrYijEysOBXV5MFgWXQuxFAoGBAImY\n7UlNeDNeT81YAfJHm7ikBcJcUlaH2aLL9OeuVlxMd93OrGC+Pr0cIbckLErkXfKw\nlKpJw9hccV7bWTi07GESeGc8oV/mDgu077rQX3zsZj6KujtlMS/WmMzGc5htpRJ1\nrVbgTdbJN3rNHGHYcP/X1u9zFszUp2MS0dUn44r5AoGBALVTt2B7LtzyYA1BtTLy\nhSQEX7x60iQkR5UlFBixEMpwlH0yAX4+B55cDcKQ8Hxpz4oOqO/YTtECiIk9s71V\n6AnmPTIzxLvIsJaqDBPdJyt0V8l2jSKOfn5WF0NXeTVtzjsEGdSbzfL+aW5d1XLl\nGuogLsu6QMk6IHHr1YGQukwe\n-----END PRIVATE KEY-----\n",
+  "client_email": "group-project-service-account@group-project-shopee.iam.gserviceaccount.com",
+  "client_id": "107113873089259516778",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/group-project-service-account%40group-project-shopee.iam.gserviceaccount.com"
+}
